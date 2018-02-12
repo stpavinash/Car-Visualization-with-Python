@@ -1,24 +1,9 @@
+import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-import seaborn as sns
-
 cardata = pd.read_excel("E:/NIU/Summer/CSCI-697/Week4/cardata_Updated.xlsx", sheetname='cardata1')
 cardata
-
-#plt.figure()
-carplot = sns.pairplot(data=cardata[["Engine Size (l)","Cyl","HP","Avg_MPG"]],diag_kind="kde",    palette="Set1", dropna=True)
-
-# To change the size of the scatterpoints in graph
-carplot = carplot.map_offdiag(plt.scatter,  s=10 ,alpha=0.5)
-
-# Additional line to adjust some appearance issue
-plt.subplots_adjust(top=0.9)
-
-# Turns off grid on the Axis
-plt.grid(False)
-
-# Set the Title of the graph from here
-carplot.fig.suptitle('Relationship between Engine Size, Cylinders, HP and Average MPG',fontsize=20,color="r",alpha=1)
-
+from pandas.plotting import scatter_matrix
+df = pd.DataFrame(cardata, columns=['Engine Size (l)', 'Cyl', 'HP', 'Avg_MPG'])
+a = scatter_matrix(df, alpha=0.8, figsize=(20, 20), diagonal='kde')
 plt.show()

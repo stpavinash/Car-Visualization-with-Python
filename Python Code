@@ -1,9 +1,0 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-cardata = pd.read_excel("E:/NIU/Summer/CSCI-697/Week4/cardata_Updated.xlsx", sheetname='cardata1')
-cardata
-from pandas.plotting import scatter_matrix
-df = pd.DataFrame(cardata, columns=['Engine Size (l)', 'Cyl', 'HP', 'Avg_MPG'])
-a = scatter_matrix(df, alpha=0.8, figsize=(20, 20), diagonal='kde')
-plt.show()
